@@ -1,0 +1,117 @@
+basePath: /api
+definitions:
+  response.EmptyObject:
+    additionalProperties:
+      type: string
+    type: object
+  response.ProductResponse:
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      price:
+        type: integer
+    type: object
+  response.ResponseFail:
+    properties:
+      data: {}
+      data_fail: {}
+      message:
+        type: string
+      status:
+        default: fail
+        type: string
+    type: object
+  response.ResponseJsonSuccess:
+    properties:
+      data: {}
+      message:
+        type: string
+      status:
+        type: string
+    type: object
+host: localhost:3000
+info:
+  contact:
+    email: support@swagger.io
+    name: API Support
+    url: http://www.swagger.io/support
+  description: This is a sample server Petstore server.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Swagger Example API
+  version: "1.0"
+paths:
+  /fail:
+    get:
+      consumes:
+      - application/json
+      description: Fail
+      produces:
+      - application/json
+      responses:
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseFail'
+      summary: Fail
+      tags:
+      - Response
+  /health:
+    get:
+      consumes:
+      - application/json
+      description: Health
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.EmptyObject'
+      summary: Health
+      tags:
+      - Response
+  /interface:
+    get:
+      consumes:
+      - application/json
+      description: Interface
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ProductResponse'
+        "400":
+          description: Return error message
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.ResponseFail'
+            - properties:
+                data_fail:
+                  type: string
+              type: object
+      summary: Interface
+      tags:
+      - Response
+  /success:
+    get:
+      consumes:
+      - application/json
+      description: Success
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseJsonSuccess'
+      summary: Success
+      tags:
+      - Response
+swagger: "2.0"
