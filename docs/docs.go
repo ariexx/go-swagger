@@ -85,9 +85,9 @@ const docTemplate = `{
                 "summary": "Interface",
                 "responses": {
                     "200": {
-                        "description": "OK",
+                        "description": "Return product response",
                         "schema": {
-                            "$ref": "#/definitions/response.ProductResponse"
+                            "$ref": "#/definitions/response.ResponseJsonSuccess"
                         }
                     },
                     "400": {
@@ -140,20 +140,6 @@ const docTemplate = `{
             "type": "object",
             "additionalProperties": {
                 "type": "string"
-            }
-        },
-        "response.ProductResponse": {
-            "type": "object",
-            "properties": {
-                "id": {
-                    "type": "integer"
-                },
-                "name": {
-                    "type": "string"
-                },
-                "price": {
-                    "type": "integer"
-                }
             }
         },
         "response.ResponseFail": {

@@ -4,15 +4,6 @@ definitions:
     additionalProperties:
       type: string
     type: object
-  response.ProductResponse:
-    properties:
-      id:
-        type: integer
-      name:
-        type: string
-      price:
-        type: integer
-    type: object
   response.ResponseFail:
     properties:
       data: {}
@@ -84,9 +75,9 @@ paths:
       - application/json
       responses:
         "200":
-          description: OK
+          description: Return product response
           schema:
-            $ref: '#/definitions/response.ProductResponse'
+            $ref: '#/definitions/response.ResponseJsonSuccess'
         "400":
           description: Return error message
           schema:

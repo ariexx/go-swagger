@@ -99,7 +99,7 @@ func HandleHealth(c *fiber.Ctx) error {
 // @Description Interface
 // @Accept json
 // @Produce json
-// @Success 200 {object} response.ProductResponse
+// @Success 200 {object} response.ResponseJsonSuccess[data=response.ProductResponse] "Return product response"
 // @Failure 400 {object} response.ResponseFail{data_fail=string} "Return error message"
 // @Router /interface [get]
 func HandleInterface(c *fiber.Ctx) error {
